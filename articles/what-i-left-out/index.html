@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='utf-8' name='charset'>
+<title>What I've left out</title>
+<meta content='Learn programming with Ruby' name='description'>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/bootstrap-theme.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/codemirror.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/codemirror-solarized.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/pygment_solarized_light.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/application.css" rel="stylesheet" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../../javascripts/vendor/codemirror-compressed-4.8.js"></script>
+<script src="../../javascripts/application.js"></script>
+</head>
+<body>
+<header>
+<nav class='navbar navbar-default opal-nav' role='navigation'>
+<div class='container'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+TryRuby
+<sup>R4</sup>
+</a>
+<button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+</div>
+<div class='navbar-collapse collapse' id='opal-navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href='/articles'>
+<span aria-hidden='true' class='glyphicon glyphicon-book'></span>
+Articles
+</a>
+</li>
+<li>
+<a href='/playground'>
+<span aria-hidden='true' class='glyphicon glyphicon-tower'></span>
+Playground
+</a>
+</li>
+<li>
+<a href='/about'>
+<span aria-hidden='true' class='glyphicon glyphicon-info-sign'></span>
+About
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
+</header>
+<div class='container'>
+<h2>What I&rsquo;ve left out</h2>
+
+<p>TryRuby is a Ruby course for beginners. Its not possible to tell you everything about Ruby in
+15 minutes. Here is an overview of some of the things that I have left out.</p>
+
+<h3>Else-if</h3>
+
+<p>There is an <strong>elsif</strong> statement so you can do this:</p>
+<pre class="highlight plaintext"><code># elsif example
+if a == 1
+  do_thing1
+elsif b == 2
+  do_thing2
+else
+  do_thing3
+end
+</code></pre>
+<h3>Case</h3>
+
+<p>A variation on the if-elsif-else theme. Useful when you have to test a variable against a lot
+of different values:</p>
+<pre class="highlight plaintext"><code># Case example 1
+case a
+when 1
+  do_thing1
+when 2
+  do_thing2
+when 3
+  do_thing3
+else
+  do_thing4
+end
+</code></pre>
+<p>And there is an alternate form:</p>
+<pre class="highlight plaintext"><code># Case example 2
+case
+when a == 1
+  do_thing1
+when b == 2
+  do_thing2
+when a &gt;= 3
+  do_thing3
+else
+  do_thing4
+end
+</code></pre>
+<h3>Regular expressions</h3>
+
+<p>Sometimes you have a string and you want to test if that string contains some text. For instance if
+&lsquo;user_123&rsquo; starts with &lsquo;user_&rsquo;. You could use a test like <strong>my_string[0..4] == &lsquo;user_&rsquo;</strong>, but
+there is a much more elegant and flexible way to do this kind of string testing, called
+regular expressions.</p>
+
+<p>Reason this isn&rsquo;t in TryRuby lessons is the fact that regular expressions have a syntax that is so
+strange at first, it might make your head explode. If you see a complex regular expression for the
+first time, it is like a monkey has been randomly bashing away on a keyboard.</p>
+
+<p>The regex for the example mentioned above is relatively simple:</p>
+<pre class="highlight plaintext"><code>my_string.match( /^user_(\d+)/ )
+</code></pre>
+<p>This will return <strong>nil</strong> if my_string didn&rsquo;t conform to the regex, or a matchdata object if it did.
+In the last case it will also give you the 123 part as the matched data.</p>
+
+<p>The Ruby <a href="http://www.ruby-doc.org/core/Regexp.html" target="_blank">documentation</a> has
+a pretty good explanation on regex&rsquo;s. And googling on <em>regex</em> will give you millions of hits.</p>
+
+<h3>Method missing</h3>
+
+<p>When you try to use a method on your class that isn&rsquo;t defined, Ruby will look for a
+<a href="http://www.ruby-doc.org/core/BasicObject.html#method-i-method_missing" target="_blank">method_missing</a>
+method in your class. If present, the method_missing method will be called and handed the name of the
+method you wanted to call in the first place as a parameter.</p>
+
+<p>Now you can handle the missing method as if it existed. For instance you might want to implement
+a <em>sort_by_variable</em> method. Where <em>variable</em> is the name of one of your class variables.</p>
+
+<h3>Inspection</h3>
+
+<p>Ruby can give you a lot of information about objects when a program is running. What an object is and
+what methods it responds to.</p>
+<pre class="highlight plaintext"><code># Inspection
+s = 'abc'
+puts s.class
+puts s.methods
+puts s.respond_to?(:match)
+</code></pre>
+<h3>Error handling</h3>
+
+<p>Reality is that all programs can run into errors. Errors that only raise their ugly heads when your 
+program is running. And even when your code is flawless. That just happens.<br>
+You can let your program crash, but it is usually nicer if you let your program continue and politely tell
+that an error has occurred and it can&rsquo;t continue what it was doing.
+Ruby has a couple of facilities for this purpose:</p>
+<pre class="highlight plaintext"><code># Rescue
+begin
+  some_method_that_might_run_into_an_error
+rescue =&gt; e
+  puts "Error = #{e}"
+end
+</code></pre>
+<p>And sometimes you might even want your program to raise an error (like when the user did something really
+stupid).</p>
+<pre class="highlight plaintext"><code># Raise
+raise "Yo dude seriously ? You can't enter zero for a divisor" if divisor == 0
+</code></pre>
+<h3>IO</h3>
+
+<p>You will often need to read or write diskfiles. That is easy in Ruby. For instance reading can be done with
+<a href="http://www.ruby-doc.org/core/IO.html#method-i-read" target="_blank">IO.Read</a>.</p>
+<pre class="highlight plaintext"><code># Read a file
+file_contents = IO.Read("my_file")
+</code></pre>
+<p>See the documentation for more info.</p>
+
+<h3>Spaceship operator</h3>
+
+<p>Ruby supports this strange thing: <strong>&lt;=&gt;</strong> called the spaceship operator. It returns -1, 0 or 1 depending
+on whether the left hand side is smaller, equal to or bigger than the right hand side. Useful for sorting.</p>
+<pre class="highlight plaintext"><code>  # Spaceship operator
+  'a' &lt;=&gt; 'b'   =&gt; Returns -1
+</code></pre>
+<h3>Class inheritance</h3>
+
+<p>When you are coding objects (classes) that model some real life situation, you will often encounter
+objects that are a subset of other objects. And there are many of such subsets.
+This is where class inheritance comes to the rescue.</p>
+
+<p>A very simple (and incomplete) example:</p>
+<pre class="highlight plaintext"><code># Class inheritance
+class Animal
+  attr_reader :number_of_legs
+end
+
+class Cow &lt; Animal
+  #@number_of_legs = 4
+end
+
+class Chicken &lt; Animal
+  #@number_of_legs = 2
+end
+</code></pre>
+<p>The Cow and Chicken classes can use all attributes and methods that are defined for Animal.</p>
+
+<p>A course or a book on <em>Object Oriented programming</em> can teach you all about this import concept.</p>
+
+<h3>Instance variables</h3>
+
+<p>In the lessons we mentioned <em>object variables</em>. Actually these should be called <em>instance variables</em>,
+since these variables belong to one instance of a type of object.</p>
+
+<h3>Modules and mixins</h3>
+
+<p>Sometimes you have two classes that have a lot of similar code, but they cannot inherit from a common
+parent. To avoid having the same code in two places (something you really should avoid) you can
+place the common code in a module and <strong>mix that module into your class</strong>.</p>
+
+<p>Or you can mix-in an existing module like <em>Enumerable</em>:</p>
+<pre class="highlight plaintext"><code>  # Mix-in
+  class Blurbalizer
+    include Enumerable
+
+    attr_reader :blurbs
+
+    def initialize
+      @blurbs = []
+    end
+
+    def each(&amp;block)
+      @blurbs.each{ |blurb| block.call(blurb) }
+    end
+  end
+
+  Blurbalizer.new.methods
+</code></pre>
+<p>As long as you define method each, the Enumerable mixin now provides a lot of methods for free, like
+map and sort.</p>
+
+<h3>Meta programming</h3>
+
+<p>Unlike most other languages Ruby lets you do something called <em>Meta programming</em>. This means that a Ruby
+program can change itself while it is running.
+You can use this for example to read a table from a database, check the fieldnames of the table and create
+a method to access each field by name.</p>
+
+<h3>Garbage collection</h3>
+
+<p>In your code you are using variables all the time. Some variables are used from the start to finish, others
+only for a very short time. For instance variables created inside methods.
+But where do these variables go after you have discarded them ? Do they magically disappear ?<br>
+No, these variables, and the associated computer memory, are collected by the
+<a href="http://www.ruby-doc.org/core/GC.html" target="_blank">garbage collector</a>.</p>
+
+<p>At regular intervals the garbage collector throws away all these old, unused, unloved variables. And thus
+makes the associated computer memory free again, ready to be reused by your program.</p>
+
+<p>Normally you never notice this cleanup. Except when you are running some time-critical program like a game.
+Every couple of seconds the game shows a bit of a hiccup.</p>
+
+<h3>Importing Ruby gems</h3>
+
+<p>Before you start coding to solve a programming problem it might be a good idea to see if somebody
+else already solved the same problem. The <a href="http://rubygems.org/" target="_blank">RubyGems</a>
+website holds a vast collection of premade Ruby code. There is bound to be something there
+to give you a quick start to solve your coding problem. Gems are also very easy to install.</p>
+
+<h3>DRY</h3>
+
+<p>Not really a (Ruby) technique, but more a concept, DRY stands for <strong>D</strong>on&rsquo;t <strong>R</strong>epeat <strong>Y</strong>ourself.
+Meaning: do not write te same piece of code twice.<br>
+When you are coding you will often find you need to write a bit of code that is the same as, or very similar
+to, something you wrote before. Stop writing new code right then !!!<br>
+Instead find the existing similar code and extract it into a new method. Call the new method from the
+existing code and from the code you were about to write. Then test if everything works as expected.<br>
+Advantages of this way of coding are that you write less and easier to maintain code.</p>
+
+<h3>The price of concise readable code</h3>
+
+<p>Lastly, Ruby allows you to write very concise readable code. This comes with a price of course.<br>
+To make concise (= short) code the methods you use need to be able to do a lot of powerful stuff.
+This means that there have to be a lot of different methods, each one powerful in its own way.
+Learning to write proper Ruby code means that you will have to know a lot of different methods
+and this will take quite a bit of time.</p>
+
+<p>Other programming languages might only have a short set of methods and are quicker to learn, but
+making a real program in those languages involves a lot more work since you would have to recreate
+the powerful methods that Ruby knows as standard.</p>
+
+</div>
+</body>
+</html>

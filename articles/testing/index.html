@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='utf-8' name='charset'>
+<title>Testing, testing. Testing 123</title>
+<meta content='Learn programming with Ruby' name='description'>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/bootstrap-theme.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/codemirror.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/codemirror-solarized.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/pygment_solarized_light.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/application.css" rel="stylesheet" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../../javascripts/vendor/codemirror-compressed-4.8.js"></script>
+<script src="../../javascripts/application.js"></script>
+</head>
+<body>
+<header>
+<nav class='navbar navbar-default opal-nav' role='navigation'>
+<div class='container'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+TryRuby
+<sup>R4</sup>
+</a>
+<button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+</div>
+<div class='navbar-collapse collapse' id='opal-navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href='/articles'>
+<span aria-hidden='true' class='glyphicon glyphicon-book'></span>
+Articles
+</a>
+</li>
+<li>
+<a href='/playground'>
+<span aria-hidden='true' class='glyphicon glyphicon-tower'></span>
+Playground
+</a>
+</li>
+<li>
+<a href='/about'>
+<span aria-hidden='true' class='glyphicon glyphicon-info-sign'></span>
+About
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
+</header>
+<div class='container'>
+<h2>Testing</h2>
+
+<p>Testing software is one of the most important aspects of software development. It ensures that the code
+you are writing is doing what it is supposed to do. Now and in the future.  </p>
+
+<p>Having a comprehensive set of tests for your code gives <strong>you</strong> confidence that it does what it is
+supposed to do. It also helps bestow that confidence on <strong>others</strong>. Other people who are using or maintaining
+your code.</p>
+
+<p>Running tests some time after you created your code, for instance after some components you rely on have been
+updated, will tell you if your code still works or you need to make changes.</p>
+
+<h3>Different tests for different purposes</h3>
+
+<p>There are a lot of different kinds of test. I&rsquo;ve list a couple here, in order in which they are used in a
+real programming project:</p>
+
+<ul>
+<li>Unit tests<br>
+Tests for individual methods, classes and modules.</li>
+<li>Functional tests<br>
+Does your code do what the end user expects ?</li>
+<li>Integration tests<br>
+Put all the individual pieces of code together. Does it still work and do what it should do ?</li>
+<li>Performance tests<br>
+Response times for one development user won&rsquo;t be a problem. What happens when 100 users are
+using the software at the same time ?</li>
+<li>Penetration tests<br>
+Security needs to be built into your code from the start, but you should always test what happens
+when a skilled penetration tester throws some unexpected input at your software.
+How far can the pen-tester go ?</li>
+</ul>
+
+<h3>Waterfall versus Agile</h3>
+
+<p>I&rsquo;m not going to explain in-depth what Waterfall and Agile means. You can look it up on Wikipedia.</p>
+
+<p>Basically, use the Waterfall method if: you are designing a spaceship to fly to Mars, some medical
+device or anything that <strong>must work according to a specification</strong> with a minimal chance of errors.
+This means analyzing, describing, documenting every aspect of the software before it is built.</p>
+
+<p>If you are designing the next instant messaging platform, business app or anything where the <strong>exact
+specifications are not known in advance</strong>, but will change along the way, use an Agile development
+method.</p>
+
+<p>The following topics are specific to Agile.</p>
+
+<h3>TDD</h3>
+
+<p>Test Driven Development: Write your tests first, then write your code.</p>
+
+<p>When you develop a new piece of code or add a new function to existing code, first define a set of
+tests that the final working code should pass. Next run the tests. Most likely all tests will fail.
+Now start implementing and refactoring your code until all tests pass.</p>
+
+<p>The main advantage of this way of working is that you focus first on <strong>what</strong> your code should do,
+instead of on how it should work. In practice the effect is that you write less code.</p>
+
+<h3>BDD</h3>
+
+<p>Behavior Driven Development: an extension to TDD to include the clients functional requirements.</p>
+
+<p>Before implementing any new code you need to know what the desired behavior of that code should
+be. In other words what does the client, paying your bills, want.
+This involves the client and the developer speaking the same language. A language also known as
+plain English. BDD uses a fixed layout to write down <em>user stories</em>.</p>
+
+<p>Here is an example copied from the
+<a href="https://github.com/cucumber/cucumber/wiki/Background" target="_blank">Cucumber</a>
+documentation:</p>
+
+<blockquote>
+<p><strong>Feature:</strong> Multiple site support<br>
+&nbsp;&nbsp;<strong>As a</strong> Mephisto site owner<br>
+&nbsp;&nbsp;<strong>I want to</strong> host blogs for different people<br>
+&nbsp;&nbsp;<strong>In order to</strong> make gigantic piles of money  </p>
+
+<p>&nbsp;&nbsp;<strong>Background:</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>Given</strong> a global administrator named &ldquo;Greg&rdquo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>And</strong> a blog named &ldquo;Greg&rsquo;s anti-tax rants&rdquo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>And</strong> a customer named &ldquo;Dr. Bill&rdquo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>And</strong> a blog named &ldquo;Expensive Therapy&rdquo; owned by &ldquo;Dr. Bill&rdquo;  </p>
+
+<p>&nbsp;&nbsp;<strong>Scenario:</strong> Dr. Bill posts to his own blog<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>Given</strong> I am logged in as Dr. Bill<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>When</strong> I try to post to &ldquo;Expensive Therapy&rdquo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>Then</strong> I should see &ldquo;Your article was published.&rdquo;  </p>
+</blockquote>
+
+<p>Each feature usually has many scenario&rsquo;s.</p>
+
+<h3>Test tools and automation</h3>
+
+<p>Ruby has one of the most advanced set of testing tools available anywhere.</p>
+
+<p>For supporting TDD style testing <strong>rspec</strong> is very popular.
+BDD style testing is often done with <strong>cucumber</strong>. Cucumber lets you translate functional
+requirements written in plain English into executable (!) tests for your Ruby code.</p>
+
+<p>Testing is not supposed to involve additional work. This would soon lead to less testing.
+The answer is automating tests. When the test automation tool notices you have changed a (Ruby)
+file, part or all of the tests are executed again. And you will be notified of newly failing or
+passing tests.</p>
+
+<p>Test automation can for instance be done with <strong>autotest</strong> or <strong>guard</strong>. Guard can automate lots
+of other tasks for you as well.</p>
+
+</div>
+</body>
+</html>

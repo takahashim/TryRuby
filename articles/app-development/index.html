@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='utf-8' name='charset'>
+<title>Is there an App for that ?</title>
+<meta content='Learn programming with Ruby' name='description'>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/bootstrap-theme.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/codemirror.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/codemirror-solarized.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/vendor/pygment_solarized_light.css" rel="stylesheet" media="all" />
+<link href="../../stylesheets/application.css" rel="stylesheet" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../../javascripts/vendor/codemirror-compressed-4.8.js"></script>
+<script src="../../javascripts/application.js"></script>
+</head>
+<body>
+<header>
+<nav class='navbar navbar-default opal-nav' role='navigation'>
+<div class='container'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+TryRuby
+<sup>R4</sup>
+</a>
+<button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+</div>
+<div class='navbar-collapse collapse' id='opal-navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href='/articles'>
+<span aria-hidden='true' class='glyphicon glyphicon-book'></span>
+Articles
+</a>
+</li>
+<li>
+<a href='/playground'>
+<span aria-hidden='true' class='glyphicon glyphicon-tower'></span>
+Playground
+</a>
+</li>
+<li>
+<a href='/about'>
+<span aria-hidden='true' class='glyphicon glyphicon-info-sign'></span>
+About
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
+</header>
+<div class='container'>
+<h2>Is there an App for that ?</h2>
+
+<p>This article is about how to deliver a service (aka your software) to your customers.</p>
+
+<h3>A brief history of software delivery</h3>
+
+<p>Life used to be very simple for software developers. You made some code, copied it to a disc and
+sent it to a customer. Next came the internet, so you could distribute code via a download.
+Or the website itself became the product.</p>
+
+<p>Then computers started to shrink to the size of tablets, smartphone and wristwatches, with small
+touch operated screens, without a real keyboard and sometimes requiring your code to run on the
+device itself.</p>
+
+<p>These days, to deliver the service to a customer we really have to support multiple distribution
+channels:
+a website usable from a variety of computers and devices, plus a native app for each of the major
+platforms (Android, iOS, BlackBerry, Windows Phone, Ubuntu, Gecko).
+A lot of different technologies to learn!</p>
+
+<p>Life for software developers isn&rsquo;t that simple anymore. What are your options ?</p>
+
+<h3>HTML5</h3>
+
+<p>The first route available to you is to only create a web based version of your service.
+Web browsers are getting more powerful every year. Giving you better control over the look
+and feel of your website, regardless of the size or type of device used by your customer.</p>
+
+<p>But your customer will still need constant internet access to use your service. Fortunately
+the web browser can help us here as well. HTML R5 enabled web browsers support something called
+local storage, which you can use to make the customer think he/she is still connected to your
+service. When an internet connection becomes available again, you can sync changes.
+I am not saying that this is easy to do, far from it, but it&rsquo;s do-able.</p>
+
+<p>One thing that can make life easier is to use <a href="http://opalrb.org/" target="_blank">Opal</a>.
+This means that you can run Ruby code in the webbrowser. Normally webbrowsers only run Javascript,
+but Opal cleverly translates your Ruby code to Javascript. This saves you having to learn Javascript.<br>
+It is also very handy to use the same language for both the front-end (webbrowser) and the back-end
+(webserver with Rails for instance).</p>
+
+<blockquote>
+<p>TryRuby uses Ruby and Opal for everything.</p>
+</blockquote>
+
+<h3>Native apps</h3>
+
+<p>The other possible route is to go native. Create an app for every mobile platform that you want
+to support. Native apps give you ultimate control over the look and feel off your program.
+You will also have better access to the sensors built into the device (movement, position, &hellip;).</p>
+
+<p>Huge drawback to this approach is that every mobile platform uses a completely different development
+environment and programming language. You might need to learn about Java, Objective-C, C-Sharp and others.</p>
+
+<p>But you are in luck ! With <a href="http://www.rubymotion.com" target="_blank">RubyMotion</a>
+you can create native apps for iOS and Android using your favorite Ruby language.
+It is not free, but it will save you a lot of time !</p>
+
+</div>
+</body>
+</html>
