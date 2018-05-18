@@ -21,7 +21,7 @@
 <nav class='navbar navbar-default opal-nav' role='navigation'>
 <div class='container'>
 <div class='navbar-header'>
-<a class='navbar-brand' href='/TryRuby'>
+<a class='navbar-brand' href='/'>
 TryRuby
 <sup>R4</sup>
 </a>
@@ -34,19 +34,19 @@ TryRuby
 <div class='navbar-collapse collapse' id='opal-navbar'>
 <ul class='nav navbar-nav'>
 <li>
-<a href='/TryRuby/articles'>
+<a href='/articles'>
 <span aria-hidden='true' class='glyphicon glyphicon-book'></span>
 Articles
 </a>
 </li>
 <li>
-<a href='/TryRuby/playground'>
+<a href='/playground'>
 <span aria-hidden='true' class='glyphicon glyphicon-tower'></span>
 Playground
 </a>
 </li>
 <li>
-<a href='/TryRuby/about'>
+<a href='/about'>
 <span aria-hidden='true' class='glyphicon glyphicon-info-sign'></span>
 About
 </a>
@@ -67,7 +67,7 @@ About
 <h3>Else-if</h3>
 
 <p>There is an <strong>elsif</strong> statement so you can do this:</p>
-<pre class="highlight plaintext"><code># elsif example
+<div class="highlight"><pre class="highlight plaintext"><code># elsif example
 if a == 1
   do_thing1
 elsif b == 2
@@ -75,12 +75,12 @@ elsif b == 2
 else
   do_thing3
 end
-</code></pre>
+</code></pre></div>
 <h3>Case</h3>
 
 <p>A variation on the if-elsif-else theme. Useful when you have to test a variable against a lot
 of different values:</p>
-<pre class="highlight plaintext"><code># Case example 1
+<div class="highlight"><pre class="highlight plaintext"><code># Case example 1
 case a
 when 1
   do_thing1
@@ -91,9 +91,9 @@ when 3
 else
   do_thing4
 end
-</code></pre>
+</code></pre></div>
 <p>And there is an alternate form:</p>
-<pre class="highlight plaintext"><code># Case example 2
+<div class="highlight"><pre class="highlight plaintext"><code># Case example 2
 case
 when a == 1
   do_thing1
@@ -104,7 +104,7 @@ when a &gt;= 3
 else
   do_thing4
 end
-</code></pre>
+</code></pre></div>
 <h3>Regular expressions</h3>
 
 <p>Sometimes you have a string and you want to test if that string contains some text. For instance if
@@ -117,8 +117,8 @@ strange at first, it might make your head explode. If you see a complex regular 
 first time, it is like a monkey has been randomly bashing away on a keyboard.</p>
 
 <p>The regex for the example mentioned above is relatively simple:</p>
-<pre class="highlight plaintext"><code>my_string.match( /^user_(\d+)/ )
-</code></pre>
+<div class="highlight"><pre class="highlight plaintext"><code>my_string.match( /^user_(\d+)/ )
+</code></pre></div>
 <p>This will return <strong>nil</strong> if my_string didn&rsquo;t conform to the regex, or a matchdata object if it did.
 In the last case it will also give you the 123 part as the matched data.</p>
 
@@ -139,12 +139,12 @@ a <em>sort_by_variable</em> method. Where <em>variable</em> is the name of one o
 
 <p>Ruby can give you a lot of information about objects when a program is running. What an object is and
 what methods it responds to.</p>
-<pre class="highlight plaintext"><code># Inspection
+<div class="highlight"><pre class="highlight plaintext"><code># Inspection
 s = 'abc'
 puts s.class
 puts s.methods
 puts s.respond_to?(:match)
-</code></pre>
+</code></pre></div>
 <h3>Error handling</h3>
 
 <p>Reality is that all programs can run into errors. Errors that only raise their ugly heads when your 
@@ -152,34 +152,34 @@ program is running. And even when your code is flawless. That just happens.<br>
 You can let your program crash, but it is usually nicer if you let your program continue and politely tell
 that an error has occurred and it can&rsquo;t continue what it was doing.
 Ruby has a couple of facilities for this purpose:</p>
-<pre class="highlight plaintext"><code># Rescue
+<div class="highlight"><pre class="highlight plaintext"><code># Rescue
 begin
   some_method_that_might_run_into_an_error
 rescue =&gt; e
   puts "Error = #{e}"
 end
-</code></pre>
+</code></pre></div>
 <p>And sometimes you might even want your program to raise an error (like when the user did something really
 stupid).</p>
-<pre class="highlight plaintext"><code># Raise
+<div class="highlight"><pre class="highlight plaintext"><code># Raise
 raise "Yo dude seriously ? You can't enter zero for a divisor" if divisor == 0
-</code></pre>
+</code></pre></div>
 <h3>IO</h3>
 
 <p>You will often need to read or write diskfiles. That is easy in Ruby. For instance reading can be done with
 <a href="http://www.ruby-doc.org/core/IO.html#method-i-read" target="_blank">IO.Read</a>.</p>
-<pre class="highlight plaintext"><code># Read a file
+<div class="highlight"><pre class="highlight plaintext"><code># Read a file
 file_contents = IO.Read("my_file")
-</code></pre>
+</code></pre></div>
 <p>See the documentation for more info.</p>
 
 <h3>Spaceship operator</h3>
 
 <p>Ruby supports this strange thing: <strong>&lt;=&gt;</strong> called the spaceship operator. It returns -1, 0 or 1 depending
 on whether the left hand side is smaller, equal to or bigger than the right hand side. Useful for sorting.</p>
-<pre class="highlight plaintext"><code>  # Spaceship operator
+<div class="highlight"><pre class="highlight plaintext"><code>  # Spaceship operator
   'a' &lt;=&gt; 'b'   =&gt; Returns -1
-</code></pre>
+</code></pre></div>
 <h3>Class inheritance</h3>
 
 <p>When you are coding objects (classes) that model some real life situation, you will often encounter
@@ -187,7 +187,7 @@ objects that are a subset of other objects. And there are many of such subsets.
 This is where class inheritance comes to the rescue.</p>
 
 <p>A very simple (and incomplete) example:</p>
-<pre class="highlight plaintext"><code># Class inheritance
+<div class="highlight"><pre class="highlight plaintext"><code># Class inheritance
 class Animal
   attr_reader :number_of_legs
 end
@@ -199,7 +199,7 @@ end
 class Chicken &lt; Animal
   #@number_of_legs = 2
 end
-</code></pre>
+</code></pre></div>
 <p>The Cow and Chicken classes can use all attributes and methods that are defined for Animal.</p>
 
 <p>A course or a book on <em>Object Oriented programming</em> can teach you all about this import concept.</p>
@@ -216,7 +216,7 @@ parent. To avoid having the same code in two places (something you really should
 place the common code in a module and <strong>mix that module into your class</strong>.</p>
 
 <p>Or you can mix-in an existing module like <em>Enumerable</em>:</p>
-<pre class="highlight plaintext"><code>  # Mix-in
+<div class="highlight"><pre class="highlight plaintext"><code>  # Mix-in
   class Blurbalizer
     include Enumerable
 
@@ -232,7 +232,7 @@ place the common code in a module and <strong>mix that module into your class</s
   end
 
   Blurbalizer.new.methods
-</code></pre>
+</code></pre></div>
 <p>As long as you define method each, the Enumerable mixin now provides a lot of methods for free, like
 map and sort.</p>
 
