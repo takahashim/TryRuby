@@ -111,27 +111,8 @@ class TryRuby
   end
 
   def get_language
-    # Pref stored in a cookie ?
-    language = get_cookie('tryruby_nl_language')
-
-    # No cookie -> user browser settings to determine language
-    if language.empty?
-      # Only English for now. Uncomment lines to get browser setting
-      browserlang = `navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage || navigator.browserLanguage)`
-      case browserlang.downcase
-      when 'nl'
-        language = 'nl'
-      when 'es'
-        language = 'es'
-      when 'pt-br', 'pt'
-        language = 'pt-br'
-      else
-        language = 'en'
-      end
-
-      # Set session cookie to store language
-      set_cookie('tryruby_nl_language', language)
-    end
+    # only JA
+    language = 'ja'
 
     # Update language select list
     Element.find('#tryruby-lang-select').value = language
@@ -241,7 +222,7 @@ class TryRuby
     # Compile
     begin
       code = Opal.compile(source, :source_map_enabled => false)
-    rescue => err
+    rescue Exception => err
       log_error err
     end
 

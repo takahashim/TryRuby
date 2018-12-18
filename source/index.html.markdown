@@ -1,5 +1,5 @@
 ---
-title: "TryRuby: Learn programming with Ruby"
+title: "Ruby playground (based on TryRuby)"
 description: Learn to program in Ruby in 30 minutes
 ---
 
@@ -11,17 +11,6 @@ description: Learn to program in Ruby in 30 minutes
         <div class="col-md-2">
           <button class="btn btn-default btn-sm" id="tryruby-lang-toggle"><span aria-hidden="true" class="glyphicon glyphicon-globe"></span></button>
         </div>
-        <div class="col-md-10">
-          <div class="hidden" id="tryruby-lang-hider">
-            <select class="form-control" id="tryruby-lang-select">
-              <option value="en">English</option>
-              <option value="nl">Nederlands</option>
-              <option value="es">Espa&ntilde;ol</option>
-              <option value="pt-br">Português do Brasil</option>
-              <option value="ja">日本語</option>
-            </select>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -29,7 +18,7 @@ description: Learn to program in Ruby in 30 minutes
   
     <div id="tryruby-explanation">
 
-      <h2 id="tryruby-title">Got 30 minutes? Give Ruby a shot right now!</h2>
+      <h2 id="tryruby-title">ruby support page</h2>
 
       <div id="tryruby-content">
         <p>Ruby is a programming language from Japan which is revolutionizing software development.</p>
